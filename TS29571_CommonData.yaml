@@ -1067,18 +1067,10 @@ components:
         maxNumOfTAsForNotAllowedAreas:
           $ref: '#/components/schemas/Uinteger'
       allOf:
-        #
-        # 1st condition: restrictionType and areas attributes shall be either both absent
-        #                or both present
-        #
         - oneOf:
             - not:
                 required: [ restrictionType ]
             - required: [ areas ]
-        #
-        # 2nd condition: if restrictionType takes value NOT_ALLOWED_AREAS,
-        #                then maxNumOfTAs shall be absent
-        #
         - anyOf:
             - not:
                 required: [ restrictionType ]
@@ -1088,10 +1080,6 @@ components:
                     enum: [ NOT_ALLOWED_AREAS ]
             - not:
                 required: [ maxNumOfTAs ]
-        #
-        # 3rd condition: if restrictionType takes value ALLOWED_AREAS,
-        #                then maxNumOfTAsForNotAllowedAreas shall be absent
-        #
         - anyOf:
             - not:
                 required: [ restrictionType ]
